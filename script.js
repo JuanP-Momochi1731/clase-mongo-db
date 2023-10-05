@@ -47,6 +47,93 @@ nombres.unshift(nuevoNombre);
 console.log(`Array actualizado: ${nombres}`);
 //se usa para agregar un nuevo nombre al principio del array de nombres.//
 
+//Reto 1
+
+const getNestedRecordsExample = () => [
+  
+];
+
+const totalMatriculasNormales = (data) => {
+  const total = data.reduce((accumulator, item) => {
+    if (item.detalles.descripcion === 'matricula normal') {
+      return accumulator + item.detalles.valorMatricula;
+    }
+    return accumulator;
+  }, 0);
+
+  return total;
+};
+
+const registros = getNestedRecordsExample();
+const total = totalMatriculasNormales(registros);
+
+console.log('El total de matrículas normales es: ', total);
+
+//Reto 2
+
+const getNestedRecordsExample = () => [
+
+];
+
+const obtenerTelefonosEstudiantes = (data) => {
+  const telefonos = data.map((item) => item.detalles.contacto.telefono);
+  return telefonos;
+};
+
+const registros = getNestedRecordsExample();
+const telefonosEstudiantes = obtenerTelefonosEstudiantes(registros);
+
+console.log('Números de teléfono de los estudiantes: ', telefonosEstudiantes);
+
+//Reto 3
+
+const getNestedRecordsExample = () => [
+
+];
+
+const obtenerEstudianteConMayorMatricula = (data) => {
+  let estudianteConMayorMatricula = null;
+  let valorMatriculaMayor = 0;
+
+  for (const estudiante of data) {
+    if (estudiante.detalles.valorMatricula > valorMatriculaMayor) {
+      valorMatriculaMayor = estudiante.detalles.valorMatricula;
+      estudianteConMayorMatricula = estudiante.nombre;
+    }
+  }
+
+  return estudianteConMayorMatricula;
+};
+
+const registros = getNestedRecordsExample();
+const estudianteConMayorMatricula = obtenerEstudianteConMayorMatricula(registros);
+
+console.log('El estudiante con la matrícula de mayor valor es: ', estudianteConMayorMatricula);
+
+//Reto 4
+
+const getNestedRecordsExample = () => [
+  
+];
+
+const obtenerCorreoEstudianteMatriculaCondicional = (data) => {
+  const estudianteConMatriculaCondicional = data.find((estudiante) => estudiante.detalles.descripcion === 'matricula condicional');
+  
+  if (estudianteConMatriculaCondicional) {
+    return estudianteConMatriculaCondicional.detalles.contacto.email;
+  } else {
+    return 'No se encontró un estudiante con matrícula condicional.';
+  }
+};
+
+const registros = getNestedRecordsExample();
+const correoEstudianteMatriculaCondicional = obtenerCorreoEstudianteMatriculaCondicional(registros);
+
+console.log('El correo del estudiante con matrícula condicional es: ', correoEstudianteMatriculaCondicional);
+
+
+
+
 
 
 
